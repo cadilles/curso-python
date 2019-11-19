@@ -52,16 +52,6 @@ def updateUsuario():
         return "Erro: %s"%(e)
 
 
-@usuarios_routes.route("")
-def getUsuarios():
-    try:
-        users = mongo_db.user.find()
-        return Response(dumps(users), status=200, content_type="application/json")
-
-    except Exception as e:
-        return "Erro: %s"%(e)
-
-
 @usuarios_routes.route("", methods=["POST"])
 def postUsuarios():
     try:
@@ -81,3 +71,11 @@ def postUsuarios():
         return "Erro: %s " % (e)
         
 
+@usuarios_routes.route("")
+def getUsuarios():
+    try:
+        users = mongo_db.user.find()
+        return Response(dumps(users), status=200, content_type="application/json")
+
+    except Exception as e:
+        return "Erro: %s"%(e)
