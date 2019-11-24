@@ -8,6 +8,7 @@ grupos_routes = Blueprint(
     url_prefix="/grupos"
 )
 
+
 @grupos_routes.route("", methods=["PATCH"])
 def updateGrupo():
     try:
