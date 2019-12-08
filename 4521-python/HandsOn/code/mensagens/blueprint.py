@@ -8,7 +8,6 @@ mensagens_routes = Blueprint(
 )
 
 
-
 @mensagens_routes.route("")
 def getMensagens():
     return "Lista de mensagens"
