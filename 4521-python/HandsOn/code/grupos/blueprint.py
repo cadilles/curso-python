@@ -60,3 +60,22 @@ def getGrupos():
         return "Erro: %s"%(e)
 
     return "Lista de grupos"
+
+
+
+@grupos_routes.route("", methods=["DELETE"])
+def deleteGrupo():
+    try:
+        grupo = request.get_json()
+        deleted = mongo_db.grupo.delete_one(
+            { "name": grupo['name'] }            
+        )
+        if deleted.deleted_count:
+            response = {"message": "Grupo '%s'  removido com sucesso! "%(grupo["name"]) }
+            return Response(dumps(response), status=200, content_type="application/json")
+        else:
+            response = {"message": "Grupo '%s'  não encontrado. "%(grupo["name"]) }
+            return Response(dumps(response), status=404, content_type="application/json")
+
+    except Exception as e:
+        return "Erro: %s"%(e)

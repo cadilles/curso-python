@@ -8,7 +8,6 @@ from mensagens.blueprint import mensagens_routes
 from usuarios.blueprint import usuarios_routes
 
 app = Flask(__name__)
-
 app.register_blueprint(grupos_routes)
 app.register_blueprint(mensagens_routes)
 app.register_blueprint(usuarios_routes)
